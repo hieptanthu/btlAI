@@ -1,0 +1,60 @@
+Cấu hình tham số xgb_params trên được sử dụng để tinh chỉnh (hyperparameter tuning) cho mô hình XGBoost nhằm đạt hiệu suất tốt nhất. Dưới đây là ý nghĩa của từng tham số:
+
+1. n_estimators
+Ý nghĩa: Số lượng cây quyết định (decision trees) trong mô hình.
+Giá trị thử nghiệm: [100, 200, 300]
+Tác động:
+Số cây càng nhiều có thể cải thiện hiệu suất, nhưng cũng có thể gây ra overfitting nếu không kiểm soát tốt.
+Số cây lớn hơn sẽ làm tăng thời gian huấn luyện.
+2. max_depth
+Ý nghĩa: Độ sâu tối đa của mỗi cây.
+Giá trị thử nghiệm: [3, 5, 7, 9]
+Tác động:
+Độ sâu càng lớn, mô hình càng phức tạp và có thể học được các quy luật phức tạp hơn, nhưng cũng dễ overfit.
+Độ sâu nhỏ hơn giúp giảm overfitting và tăng tốc độ huấn luyện.
+3. learning_rate
+Ý nghĩa: Tốc độ học của mô hình (hay còn gọi là eta).
+Giá trị thử nghiệm: [0.01, 0.05, 0.1, 0.2]
+Tác động:
+Giá trị nhỏ hơn giúp mô hình học chậm nhưng ổn định và tránh overfitting, tuy nhiên cần nhiều vòng lặp hơn.
+Giá trị lớn hơn giúp mô hình hội tụ nhanh, nhưng có thể bỏ qua một số quy luật tinh tế.
+4. subsample
+Ý nghĩa: Tỷ lệ dữ liệu mẫu được lấy ngẫu nhiên để xây dựng mỗi cây.
+Giá trị thử nghiệm: [0.7, 0.8, 1.0]
+Tác động:
+Giá trị nhỏ hơn (ví dụ 0.7) giúp mô hình bớt phụ thuộc vào toàn bộ dữ liệu, giảm overfitting.
+Giá trị 1.0 tức là sử dụng toàn bộ dữ liệu cho mỗi cây.
+5. gamma
+Ý nghĩa: Tham số điều chỉnh độ phức tạp của cây, yêu cầu độ giảm lỗi tối thiểu trước khi chia nhánh.
+Giá trị thử nghiệm: [0, 0.1, 0.5]
+Tác động:
+Giá trị lớn hơn sẽ làm cho mô hình ít phân nhánh hơn, giảm overfitting nhưng có thể làm giảm khả năng học của mô hình.
+6. colsample_bytree
+Ý nghĩa: Tỷ lệ số đặc trưng (features) được chọn ngẫu nhiên để xây mỗi cây.
+Giá trị thử nghiệm: [0.5, 0.7, 1.0]
+Tác động:
+Giá trị nhỏ hơn giúp giảm độ phức tạp của mô hình và tăng tính đa dạng giữa các cây.
+Giá trị 1.0 nghĩa là sử dụng tất cả đặc trưng cho mỗi cây.
+7. reg_alpha (L1 Regularization)
+Ý nghĩa: Tham số điều chỉnh độ phạt L1 (Lasso), giúp giảm bớt giá trị tuyệt đối của các trọng số.
+Giá trị thử nghiệm: [0, 0.1, 1]
+Tác động:
+Giá trị lớn hơn sẽ làm tăng độ phạt L1, khiến các trọng số nhỏ hơn và giúp tránh overfitting.
+8. reg_lambda (L2 Regularization)
+Ý nghĩa: Tham số điều chỉnh độ phạt L2 (Ridge), giúp hạn chế các trọng số lớn.
+Giá trị thử nghiệm: [1, 1.5, 2]
+Tác động:
+Giá trị lớn hơn làm tăng độ phạt L2, khiến mô hình đơn giản hơn và giảm overfitting.
+Tóm lại
+Đây là các hyperparameter phổ biến nhất trong XGBoost, và việc tìm giá trị tối ưu thông qua Grid Search hoặc Random Search sẽ giúp cải thiện hiệu suất của mô hình.
+Các tham số như n_estimators, max_depth, và learning_rate ảnh hưởng lớn đến tốc độ học và khả năng tổng quát của mô hình.
+
+
+
+mkdir MyHiepNetwork
+cd MyHiepNetwork
+
+
+ git config --global user.email "nguyenhiep24102002@gmail.com"
+  git config --global user.name "hieptanthu"
+
